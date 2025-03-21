@@ -9,6 +9,8 @@ import config from "./src/config/config.js";
 import aboutRoutes from "./src/routes/aboutRoutes.js";
 import skillRoutes from "./src/routes/skillRoutes.js";
 import authRoutes from "./src/routes/authRoutes.js";
+import projectRoutes from "./src/routes/projectRoutes.js";
+import contactRoutes from "./src/routes/contactRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -23,9 +25,23 @@ app.use("/api/home", homeRoutes);
 app.use("/api/about", aboutRoutes);
 app.use("/api/skills", skillRoutes);
 // app.use("/api/projects", projectRoutes);
+app.use("/api/projects", projectRoutes);
+app.use("/api/contact", contactRoutes);
 app.use("/api/auth", authRoutes);
 // Connect to MongoDB
 connectDB();
 app.listen(config.PORT, () =>
   console.log(`Server running on port ${config.PORT}`)
 );
+// 🔹 Projects:
+
+// View all projects (GET /api/projects)
+// View a single project (GET /api/projects/:id)
+// Add new project (POST /api/projects) – Admin only
+// Update project (PUT /api/projects/:id) – Admin only
+// Delete project (DELETE /api/projects/:id) – Admin only
+// 🔹 Contact Form:
+
+// Submit a contact message (POST /api/contact)
+// View all messages (GET /api/contact) – Admin only
+// Delete a message (DELETE /api/contact/:id) – Admin only
