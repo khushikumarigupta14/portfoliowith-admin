@@ -6,6 +6,9 @@ import dotenv from "dotenv";
 import homeRoutes from "./src/routes/homeRoutes.js";
 import connectDB from "./src/config/db.js";
 import config from "./src/config/config.js";
+import aboutRoutes from "./src/routes/aboutRoutes.js";
+import skillRoutes from "./src/routes/skillRoutes.js";
+import authRoutes from "./src/routes/authRoutes.js";
 
 dotenv.config();
 const app = express();
@@ -17,7 +20,10 @@ app.use(express.json());
 
 // Routes
 app.use("/api/home", homeRoutes);
-
+app.use("/api/about", aboutRoutes);
+app.use("/api/skills", skillRoutes);
+// app.use("/api/projects", projectRoutes);
+app.use("/api/auth", authRoutes);
 // Connect to MongoDB
 connectDB();
 app.listen(config.PORT, () =>
